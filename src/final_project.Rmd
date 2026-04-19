@@ -7,8 +7,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "..")
 library(tidyverse)
-
 ```
 
 ```{r}
@@ -19,8 +19,26 @@ names(sleep_df)
 # Probability Distribution
 
 ## Qualitative Data
-```{r}
 
+For this section, the qualitative variable is "sleep disorder". Success is defined as "None".
+```{r}
+sleep_df %>%
+  count(`Sleep Disorder`) %>%
+  mutate(prop = n / sum(n))
 ```
 
-## Quanti
+## Quantitative Data
+
+For this section, the quantitative variable is "sleep duration".
+
+```{r}
+sleep_df %>%
+  ggplot(aes(sample = `Sleep Duration`)) +
+  stat_qq() +
+  stat_qq_line(color = "red")
+
+sleep_df %>%
+  ggplot(aes(x = `Sleep Duration`)) +
+  geom_boxplot()
+```
+
