@@ -1,0 +1,26 @@
+---
+title: "Final_Project"
+author: "Seth Garner, Gavin Childers, Julie Muhimpundu"
+date: "2026-04-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+```
+
+```{r}
+sleep_df <- read_csv("data/sleep_data.csv")
+#sleep_df
+names(sleep_df)
+```
+# Probability Distribution
+
+## Qualitative Data
+```{r}
+
+```
+
+## Quanti
