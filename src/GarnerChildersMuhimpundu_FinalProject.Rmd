@@ -12,33 +12,131 @@ library(tidyverse)
 ```
 
 ```{r}
-sleep_df <- read_csv("data/sleep_data.csv")
-#sleep_df
-names(sleep_df)
-```
-# Probability Distribution
-
-## Qualitative Data
-
-For this section, the qualitative variable is "sleep disorder". Success is defined as "None".
-```{r}
-sleep_df %>%
-  count(`Sleep Disorder`) %>%
-  mutate(prop = n / sum(n))
+sleep_df <- read_csv("sleep_data.csv")
+sleep_df
 ```
 
-## Quantitative Data
+# Section 1
 
-For this section, the quantitative variable is "sleep duration".
+# 1.1) Qualitative Data
+
+Sleep Disorder
+Success == "None"
+Fail == "Sleep Apnea" or "Insomnia"
 
 ```{r}
-sleep_df %>%
-  ggplot(aes(sample = `Sleep Duration`)) +
-  stat_qq() +
-  stat_qq_line(color = "red")
+# Population proportion (p)
+p <- mean(sleep_df$`Sleep Disorder` == "None", na.rm = TRUE)
+p
 
-sleep_df %>%
-  ggplot(aes(x = `Sleep Duration`)) +
-  geom_boxplot()
+n <- 50
+
+# Mean (mu)
+mu <- n * p
+
+# Standard deviation (sigma)
+sigma <- sqrt(n * p * (1 - p))
+
+mu
+sigma
 ```
+The random variable X, representing the number of individuals with no sleep disorder in a sample of size 50, follows a binomial distribution because:
+i) The Number of Trials are Fixed (n = 50)
+ii) Each trial has two outcomes (Success, Fail)
+iii) The probability of success (p) is constant
+iv) Observations are Independent
+
+```{r}
+np <- n * p
+nq <- n * (1 - p)
+np
+nq
+
+z <- (mu + 0.5 - mu) / sigma
+z
+
+prob <- 1 - pnorm(z)
+prob
+```
+Since np & n(1-p) > 10, the binomial distribution is approximately normal. A continuity correction of 0.5 is applied when converting from the discrete binomial distribution to the continuous normal distribution. The resulting probability represents the likelihood that the number of individuals with no sleep disorder in a sample of 50 exceeds the expected value.
+
+```{r}
+# Population proportion
+p <- mean(sleep_df$`Sleep Disorder` == "None", na.rm = TRUE)
+
+# Sample size
+n <- 50
+
+# Mean of sampling distribution
+phat_mean <- p
+
+# Standard error of sampling distribution
+phat_se <- sqrt(p * (1 - p) / n)
+
+phat_mean
+phat_se
+```
+The mean of the sampling distribution equals the population proportion p, confirming that $\hat{p} $is an unbiased estimator. The standard error measures the typical variation of the sample proportion from sample to sample, and it decreases as sample size increases.
+
+# 1.2) Quanitative Data
+
+Sleep Duration
+
+The quantitative variable selected is `Sleep Duration`, which measures the number of hours of sleep per individual.
+
+```{r}
+ggplot(sleep_df, aes(x = `Sleep Duration`)) +
+  geom_histogram(bins = 30, color = "black", fill = "lightblue") +
+  labs(title = "Histogram of Sleep Duration",
+       x = "Sleep Duration",
+       y = "Frequency")
+```
+The histogram of Sleep Duration does not show a clear bell-shaped or symmetric distribution. Instead, the data appears somewhat unevenly distributed, with mild clustering and no strong single central peak. This suggests that the variable is not approximately normally distributed.
+
+Because the shape is not clearly symmetric and does not follow the typical Gaussian pattern, we conclude that the population distribution of Sleep Duration is not normal.
+
+The sampling distribution of the sample mean can still be approximately normal due to the Central Limit Theorem.
+
+
+Sample Size: n = 50
+
+X = Sleep Duration
+$\bar{X}$ = Sample Mean of Sleep Duration
+n = 50
+
+```{r}
+mu <- mean(sleep_df$`Sleep Duration`, na.rm = TRUE)
+sigma <- sd(sleep_df$`Sleep Duration`, na.rm = TRUE)
+
+n <- 50
+
+se <- sigma / sqrt(n)
+
+mu
+se
+```
+Although the population distribution of Sleep Duration is not normal, the Central Limit Theorem guarantees that the sampling distribution of the sample mean is approximately normal for a sample size of 50. The mean of this distribution equals the population mean, and its variability is reduced by a factor of $\sqrt{n}$, resulting in a standard error of $\frac{\sigma}{\sqrt{50}}$
+
+
+Assume $\bar{X} > 7$
+
+```{r}
+x_value <- 7  # choose a meaningful threshold
+
+z <- (x_value - mu) / (sigma / sqrt(n))
+
+prob <- 1 - pnorm(z)
+
+z
+prob
+```
+To find the probability that the sample mean exceeds 7 hours, we standardize using the sampling distribution of the mean:
+
+Z = $\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}$
+
+The resulting probability is computed using the standard normal distribution.
+
+
+
+
 
