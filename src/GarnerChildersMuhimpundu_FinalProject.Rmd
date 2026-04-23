@@ -146,3 +146,44 @@ Variable: Sleep Disorder
 * What is a confidence interval for the true proportion of individuals who have no sleep disorder?
 
 2. One-sample confidence interval for the population mean
+Variable: Sleep Duration
+What is a confidence interval for the true mean sleep duration of individuals in the population?
+
+3. One-sample proportion hypothesis test
+Variable: Sleep Disorder
+Is the true proportion of individuals with no sleep disorder different from 60%
+
+$H_0: p = 0.60$
+$H_A: p != 0.60$
+
+4. One-Sample t test
+Variable: Sleep Duration
+Is the true mean sleep duration different from 7 hours?
+
+$H_0: \mu = 7$
+$H_A:\mu!=7$
+
+5. Two-sample mean independent t test
+Variables: Sleep Duration, Gender
+Is there a signigicant difference in mean sleep duration between male and female individuals?
+
+$H_0:\mu_M=\mu_F$
+$H_A:\mu_M!=\mu_F$
+
+6. Linear relationship between two quantitative variables
+Variables: Sleep Duration, Quality of Sleep
+Is there a linear relationship between sleep duration and quality of sleep?
+
+$H_0:\beta_1=0$
+$H_A:\beta_1!=0$
+
+# Data Overview
+
+The dataset used in this project is the Sleep Health and Lifestyle Dataset. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
+
+The key variables used in this project are:
+
+- **Sleep Disorder**: a qualitative variable used for the one-sample confidence interval for a population proportion and the one-sample proportion hypothesis test.
+- **Sleep Duration**: a quantitative variable used for the one-sample confidence interval for the population mean and the one-sample t test.
+- **Gender**: a qualitative grouping variable used for the two-sample independent t test.
+- **Quality of Sleep**: a quantitative variable used with Sleep Duration to examine whether there is a linear relationship between two quantitative variables.
