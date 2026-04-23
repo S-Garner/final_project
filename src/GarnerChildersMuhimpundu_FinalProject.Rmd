@@ -16,7 +16,7 @@ sleep_df <- read_csv("sleep_data.csv")
 sleep_df
 ```
 
-# Section 1
+# Heading 1: Probability Distributions
 
 # 1.1) Qualitative Data
 
