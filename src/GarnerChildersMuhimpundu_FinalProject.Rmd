@@ -136,7 +136,13 @@ Z = $\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}$
 
 The resulting probability is computed using the standard normal distribution.
 
+# Heading 2: Introduction
 
+# Research Objectives
+The purpose of this analysis is to study patterns in sleep health using both qualitative and quantitative variables from the dataset. The analysis is designed to estimate population characteristics, test statistical claims, compare groups, and examine relationships between variables. This is important because sleep affects health, daily functioning, and overall quality of life. By using confidence intervals and hypothesis tests, the analysis provides evidence-based conclusions rather than simple guesses from raw data.
 
+1. One-sample confidence interval for the population proportion
+Variable: Sleep Disorder
+* What is a confidence interval for the true proportion of individuals who have no sleep disorder?
 
-
+2. One-sample confidence interval for the population mean
