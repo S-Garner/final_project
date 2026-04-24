@@ -414,4 +414,27 @@ The sample estimates indicate that females (M = 7.23) report slightly higher sle
 
 # Heading 6: Sample Linear Regression
 
+Research Question:
+  Is there a linear relationship between Sleep Duration and Quality of Sleep?
+
+X: Sleep Duration: A Quantitative Value representative of hours of sleep.
+Y: Quality of Sleep: A Quantitative Value representative of a 0-10 scale of Sleep Quality.
+
+Hypothesis:
+$H_0: \beta_1 = 0$
+$H_A: \beta_1 \neq 0$
+
+```{r}
+model <- lm(sleep_df$`Quality of Sleep` ~ sleep_df$`Sleep Duration`)
+
+summary(model)
+```
+A simple linear regression was conducted to examine the relationship between sleep duration and quality of sleep. The results show a statistically significant postie linear relationship between the two variables.
+
+Sleep duration was strong predictor of sleep quality, this indicated that for each additional hour of sleep, the quality of sleep increased by ~1.33 on the 0-10 scale on average.
+
+The overall model was statistically significant, suggesting that ~78% of the variation in sleep quality is explained by sleep duration, indicating a strong relationship.
+
+Overall, there is strong evidence of a positive linear relationship between sleep duration and sleep quality, where longer sleep duration is associated with higher sleep quality.
+
 # Heading 7: Report
