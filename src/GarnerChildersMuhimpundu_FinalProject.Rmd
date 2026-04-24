@@ -188,9 +188,9 @@ The key variables used in this project are:
 - **Gender**: a qualitative grouping variable used for the two-sample independent t test.
 - **Quality of Sleep**: a quantitative variable used with Sleep Duration to examine whether there is a linear relationship between two quantitative variables.
 
-# Heading 3:
+# Heading 3: Exploratory Data Analysis
 
-# Heading 4:
+# Heading 4: One Sample: Confidience Interval and Hypothesis Testing
 
 ## Section 4.0: Population and sample
 
@@ -264,8 +264,8 @@ prop.test(x_success, n_total, conf.level = 0.98)
 prop.test(x_success, n_total, p = 0.60, alternative = "two.sided")
 ```
 
-# Heading 5:
+# Heading 5: Two Samples T-Test - Independent Sampling Method
 
-# Heading 6:
+# Heading 6: Sample Linear Regression
 
 # Heading 7: Report
