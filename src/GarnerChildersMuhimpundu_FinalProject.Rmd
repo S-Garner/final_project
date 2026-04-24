@@ -154,21 +154,21 @@ Variable: Sleep Disorder
 Is the true proportion of individuals with no sleep disorder different from 60%
 
 $H_0: p = 0.60$
-$H_A: p != 0.60$
+$H_A: p \ne 0.60$
 
 4. One-Sample t test
 Variable: Sleep Duration
 Is the true mean sleep duration different from 7 hours?
 
 $H_0: \mu = 7$
-$H_A:\mu!=7$
+$H_A:\mu\ne7$
 
 5. Two-sample mean independent t test
 Variables: Sleep Duration, Gender
 Is there a signigicant difference in mean sleep duration between male and female individuals?
 
 $H_0:\mu_M=\mu_F$
-$H_A:\mu_M!=\mu_F$
+$H_A:\mu_M\ne\mu_F$
 
 6. Linear relationship between two quantitative variables
 Variables: Sleep Duration, Quality of Sleep
@@ -191,6 +191,78 @@ The key variables used in this project are:
 # Heading 3:
 
 # Heading 4:
+
+## Section 4.0: Population and sample
+
+The population of interest is the broader group of individuals whose sleep pattern are represented by this dataset.
+
+The sample is the set of individuals recorded in the Sleep Health and Lifestyle Dataset that were used in this analysis.
+
+## Section 4.1: Quanitative Variable
+
+The quantitative variable used in this section is Sleep Duration, measured in hours of sleep per individual.
+
+This is a quantitative numerical variable.
+
+The parameter of interest is the population mean sleep duration, denoted by $\mu$.
+
+The statistic is the sample mean sleep duration, denoted by \(\bar{x}\).
+
+The research question is: Is the true mean sleep duration different from 7 hours?
+
+$H_0: \mu = 7$
+$H_A:\mu!=7$
+
+```{r}
+sleep_duration <- sleep_df$`Sleep Duration`
+
+xbar <- mean(sleep_duration)
+xbar
+
+# 99% confidence interval for pop mean
+t.test(sleep_duration, conf.level = 0.99)
+
+# One-sample t test for mu = 7
+t.test(sleep_duration, mu = 7, alternative = "two.sided", conf.level = 0.99)
+```
+
+The point estimate for the population mean sleep duration is the same mean $\bar{x}$
+
+A 99% confidence interval was constructed for the true population mean sleep duration.
+
+A one-sample t test was also conducted to test whether the true mean sleep duration differes from 7 hours
+
+## 4.2: Qualitative variable
+
+The qualitative variable used in this section is Sleep Disorder.
+
+For this analysis, a success is defined as an individual having no sleep disorder, that is, `Sleep Disorder = "None"`.
+
+This is a categorical variable.
+
+The parameter of interest is the population proportion of individuals with no sleep disorder, denoted by $p$.
+
+The statistic is the sample proportion of individuals with no sleep disorder, denoted by $\hat{p}$.
+
+The research question is: Is the true proportion of individuals with no sleep disorder different from 60%?
+
+$H_0: p = 0.60$
+$H_A: p \ne 0.60$
+
+```{r}
+x_success <- sum(sleep_df$`Sleep Disorder` == "None")
+n_total <- sum(!is.na(sleep_df$`Sleep Disorder`))
+phat <- x_success / n_total
+
+# Point estimate
+phat
+
+# 98% confidence interval for pop proportion
+prop.test(x_success, n_total, conf.level = 0.98)
+
+# One-sample proportion test for p = 0.60
+prop.test(x_success, n_total, p = 0.60, alternative = "two.sided")
+```
 
 # Heading 5:
 
