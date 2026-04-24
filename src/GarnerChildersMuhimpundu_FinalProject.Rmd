@@ -369,6 +369,49 @@ prop.test(x_success, n_total, p = 0.60, alternative = "two.sided")
 
 # Heading 5: Two Samples T-Test - Independent Sampling Method
 
+Research Question:
+  "Is there a difference in sleep duration based on gender?"
+
+Population:
+  All Individuals who identified as `Male`
+  All Individuals who identified as `Female`
+  
+Samples:
+  Sleep Duration in Men
+  Sleep Duration in Women
+  
+Variables:
+  `Gender`: Gender is a categorical variable representing the `X` value. Made up of 2 independent groups, individuals indemnifying as Male, and individuals identifying as Female.
+  `Sleep Duration`: Sleep Duration is a quantitative variable representing the Y value. It's a continuous numerical variable for average number of hours of sleep a night.
+  
+Parameters:
+  $\mu_m$ = Avg. Sleep Duration for Males
+  $\mu_f$ = Avg. Sleep Duration for Females
+  
+Statistics:
+  $\bar{x}_1$ = Sample Mean Sleep Duration for Males
+  $\bar{x}_2$ = Sample Mean Sleep Duration for Females
+  
+Hypothesis:  
+  
+$H_0: \mu_m - \mu_f = 0$
+
+$H_A: \mu_m - \mu_f \neq 0$
+
+```{r}
+# Two-sample independent t-test
+t_test_result <- t.test(`Sleep Duration` ~ Gender, data = sleep_df,
+                        alternative = "two.sided",
+                        var.equal = FALSE)
+
+t_test_result
+```
+A Welch two-sample t-test was conducted to compare mean sleep duration between females and males. The results showed a statistically significant difference in mean sleep duration between the two groups, t(349.38) = 2.36, p = 0.019. Since the p-value is less than 0.05, we reject the null hypothesis that the population means are equal.
+
+The 95% confidence interval for the difference in means was (0.032, 0.354), which does not include 0. This supports the conclusion that there is a significant difference in average sleep duration between genders.
+
+The sample estimates indicate that females (M = 7.23) report slightly higher sleep duration than males (M = 7.04).
+
 # Heading 6: Sample Linear Regression
 
 # Heading 7: Report
