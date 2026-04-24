@@ -187,3 +187,13 @@ The key variables used in this project are:
 - **Sleep Duration**: a quantitative variable used for the one-sample confidence interval for the population mean and the one-sample t test.
 - **Gender**: a qualitative grouping variable used for the two-sample independent t test.
 - **Quality of Sleep**: a quantitative variable used with Sleep Duration to examine whether there is a linear relationship between two quantitative variables.
+
+# Heading 3:
+
+# Heading 4:
+
+# Heading 5:
+
+# Heading 6:
+
+# Heading 7: Report
