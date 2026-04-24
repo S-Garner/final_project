@@ -190,6 +190,109 @@ The key variables used in this project are:
 
 # Heading 3: Exploratory Data Analysis
 
+## Qualitative Variables)
+
+### Sleep Duration)
+
+Summary
+```{r}
+summary(sleep_df$`Sleep Duration`)
+mean(sleep_df$`Sleep Duration`, na.rm = TRUE)
+median(sleep_df$`Sleep Duration`, na.rm = TRUE)
+sd(sleep_df$`Sleep Duration`, na.rm = TRUE)
+IQR(sleep_df$`Sleep Duration`, na.rm = TRUE)
+range(sleep_df$`Sleep Duration`, na.rm = TRUE)
+```
+Sleep Duration Histogram:
+```{r}
+ggplot(sleep_df, aes(x = `Sleep Duration`)) +
+  geom_histogram(binwidth = 0.5, fill = "lightblue", color = "white") +
+  labs(
+    title = "Distribution of Sleep Duration",
+    x = "Sleep Duration",
+    y = "Count"
+  )
+```
+
+The distribution of sleep duration is slightly right-skewed (positively skewed), indicating a small concentration of lower sleep values that extend the lower tail of the distribution. Most observations are clustered between approximately 6.4 and 7.8 hours, with a central tendency around a median of 7.2 hours and a mean of 7.13 hours, suggesting the distribution is fairly balanced overall with only mild skewness.
+
+The histogram also indicates a noticeable concentration of values around 8 hours, forming a secondary peak and suggesting that a portion of the sample reports higher-than-average sleep duration. The relatively small standard deviation (~0.80) reflects low variability, meaning most sleep durations are fairly consistent and close to the mean.
+
+### Quality of Sleep)
+
+Summary
+```{r}
+summary(sleep_df$`Quality of Sleep`)
+mean(sleep_df$`Quality of Sleep`, na.rm = TRUE)
+median(sleep_df$`Quality of Sleep`, na.rm = TRUE)
+sd(sleep_df$`Quality of Sleep`, na.rm = TRUE)
+IQR(sleep_df$`Quality of Sleep`, na.rm = TRUE)
+range(sleep_df$`Quality of Sleep`, na.rm = TRUE)
+```
+
+Histogram Distribution
+```{r}
+ggplot(sleep_df, aes(x = `Quality of Sleep`)) +
+  geom_histogram(binwidth = 1, fill = "lightgreen", color = "white") +
+  labs(
+    title = "Distribution of Quality of Sleep",
+    x = "Quality of Sleep",
+    y = "Count"
+  )
+```
+
+The distribution of Quality of Sleep is concentrated toward higher values, with most observations falling between 6 and 8, indicating generally good sleep quality across the sample. The median is 7 and the mean is 7.31, suggesting a slight tendency toward higher sleep quality, with only a small difference between the two measures.
+
+The histogram indicates a slight negative (left) skew, driven by a small number of lower scores, particularly the minimum value of 4, which extends the lower tail of the distribution. In contrast, higher values up to 9 are more frequent and form the main cluster of the data.
+
+## Categorial Variables
+
+### Sleep Disorder)
+
+Freq and Rel Freq
+```{r}
+# Frequency table
+table(sleep_df$`Sleep Disorder`)
+
+# Relative frequency table
+prop.table(table(sleep_df$`Sleep Disorder`))
+```
+Bar Graph:
+```{r}
+ggplot(sleep_df, aes(x = `Sleep Disorder`)) +
+  geom_bar(fill = "violet") +
+  labs(
+    title = "Sleep Disorder Distribution",
+    x = "Sleep Disorder",
+    y = "Count"
+  )
+```
+
+The distribution of sleep disorder status shows that the majority of participants (58.6%) fall into the `None` category, indicating that most individuals in the sample do not report a diagnosed sleep disorder. This dominance of the `None` group is the most prominent feature of the data.
+
+In contrast, Insomnia (20.6%) and Sleep Apnea (20.9%) are present at much lower and nearly equal proportions. This suggests that, among those with a reported sleep disorder, the sample is fairly evenly split between the two conditions.
+
+### Gender)
+
+Freq
+```{r}
+table(sleep_df$Gender)
+prop.table(table(sleep_df$Gender))
+```
+Bar Graph
+```{r}
+ggplot(sleep_df, aes(x = Gender)) +
+  geom_bar(fill = "lightpink") +
+  labs(
+    title = "Gender Distribution",
+    x = "Gender",
+    y = "Count"
+  )
+```
+The distribution of gender is nearly even, with 189 males (50.5%) and 185 females (49.5%). This indicates a well-balanced sample with no meaningful gender imbalance.
+
+The bar graph reflects this symmetry clearly, with both categories appearing almost equal in height. Overall, gender is evenly represented in the dataset.
+
 # Heading 4: One Sample: Confidience Interval and Hypothesis Testing
 
 ## Section 4.0: Population and sample
