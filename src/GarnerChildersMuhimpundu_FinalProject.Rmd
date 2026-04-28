@@ -479,5 +479,7 @@ Overall, there is strong evidence of a positive linear relationship between slee
 # Heading 7: Report
 
 Overall, the analysis suggests that sleep duration, sleep quality, gender, and sleep disorder status are meaningful variables for studying well-being and responsible living. Most individuals in the dataset reported no sleep disorder, though insomnia and sleep apnea were still present in a substantial portion of the sample. The average sleep duration was close to 7 hours, and the hypothesis test examined whether the true mean differed from that benchmark.
+
 The two-sample t-test showed a statistically significant difference in average sleep duration between males and females, with females reporting slightly higher sleep duration on average. The regression analysis also showed a strong positive relationship between sleep duration and quality of sleep, meaning individuals who slept longer tended to report better sleep quality.
+
 These results connect to responsible living because sleep is an important part of physical health, mental health, and daily functioning. The analysis supports the idea that lifestyle and health patterns can be studied statistically, allowing conclusions to be based on evidence rather than assumptions.
