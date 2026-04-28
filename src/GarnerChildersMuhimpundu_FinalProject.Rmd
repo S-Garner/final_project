@@ -457,6 +457,16 @@ $H_A: \beta_1 \neq 0$
 model <- lm(sleep_df$`Quality of Sleep` ~ sleep_df$`Sleep Duration`)
 
 summary(model)
+
+ggplot(sleep_df, aes(x = `Sleep Duration`, y = `Quality of Sleep`)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Sleep Duration vs Sleep Quality",
+    x = "Sleep Duration (hours)",
+    y = "Quality of Sleep"
+  ) +
+  theme_minimal()
 ```
 A simple linear regression was conducted to examine the relationship between sleep duration and quality of sleep. The results show a statistically significant positive linear relationship between the two variables.
 
