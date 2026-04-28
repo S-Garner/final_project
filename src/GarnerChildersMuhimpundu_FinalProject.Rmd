@@ -18,7 +18,7 @@ sleep_df
 
 # Heading 1: Probability Distributions
 
-# 1.1) Qualitative Data
+## 1.1) Qualitative Data
 
 Sleep Disorder
 Success == "None"
@@ -78,7 +78,7 @@ phat_se
 ```
 The mean of the sampling distribution equals the population proportion p, confirming that $\hat{p} $is an unbiased estimator. The standard error measures the typical variation of the sample proportion from sample to sample, and it decreases as sample size increases.
 
-# 1.2) Quanitative Data
+## 1.2) Quanitative Data
 
 Sleep Duration
 
@@ -138,7 +138,7 @@ The resulting probability is computed using the standard normal distribution.
 
 # Heading 2: Introduction
 
-# Research Objectives
+## Research Objectives
 The purpose of this analysis is to study patterns in sleep health using both qualitative and quantitative variables from the dataset. The analysis is designed to estimate population characteristics, test statistical claims, compare groups, and examine relationships between variables. This is important because sleep affects health, daily functioning, and overall quality of life. By using confidence intervals and hypothesis tests, the analysis provides evidence-based conclusions rather than simple guesses from raw data.
 
 1. One-sample confidence interval for the population proportion
@@ -177,7 +177,7 @@ Is there a linear relationship between sleep duration and quality of sleep?
 $H_0:\beta_1=0$
 $H_A: \beta_1 \ne 0$
 
-# Data Overview
+## Data Overview
 
 The dataset used in this project is the Sleep Health and Lifestyle Dataset from Kaggle. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
 
