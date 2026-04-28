@@ -175,11 +175,11 @@ Variables: Sleep Duration, Quality of Sleep
 Is there a linear relationship between sleep duration and quality of sleep?
 
 $H_0:\beta_1=0$
-$H_A:\beta_1!=0$
+$H_A: \beta_1 \ne 0$
 
 # Data Overview
 
-The dataset used in this project is the Sleep Health and Lifestyle Dataset. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
+The dataset used in this project is the Sleep Health and Lifestyle Dataset from Kaggle. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
 
 The key variables used in this project are:
 
@@ -245,7 +245,7 @@ The distribution of Quality of Sleep is concentrated toward higher values, with 
 
 The histogram indicates a slight negative (left) skew, driven by a small number of lower scores, particularly the minimum value of 4, which extends the lower tail of the distribution. In contrast, higher values up to 9 are more frequent and form the main cluster of the data.
 
-## Categorial Variables
+## Categorical Variables
 
 ### Sleep Disorder)
 
@@ -293,7 +293,7 @@ The distribution of gender is nearly even, with 189 males (50.5%) and 185 female
 
 The bar graph reflects this symmetry clearly, with both categories appearing almost equal in height. Overall, gender is evenly represented in the dataset.
 
-# Heading 4: One Sample: Confidience Interval and Hypothesis Testing
+# Heading 4: One Sample: Confidence Interval and Hypothesis Testing
 
 ## Section 4.0: Population and sample
 
@@ -302,6 +302,13 @@ The population of interest is the broader group of individuals whose sleep patte
 The sample is the set of individuals recorded in the Sleep Health and Lifestyle Dataset that were used in this analysis.
 
 ## Section 4.1: Quanitative Variable
+
+### Check assumptions
+
+- The variable Sleep Duration is quantitative
+- The sample size is large, with more than 30 observations
+- The observations are assumed to be independent because each row represents a different individual
+- The assumptions appear reasonable for this analysis
 
 The quantitative variable used in this section is Sleep Duration, measured in hours of sleep per individual.
 
@@ -314,7 +321,7 @@ The statistic is the sample mean sleep duration, denoted by \(\bar{x}\).
 The research question is: Is the true mean sleep duration different from 7 hours?
 
 $H_0: \mu = 7$
-$H_A:\mu!=7$
+$H_A: \mu \ne 7$
 
 ```{r}
 sleep_duration <- sleep_df$`Sleep Duration`
@@ -333,9 +340,18 @@ The point estimate for the population mean sleep duration is the same mean $\bar
 
 A 99% confidence interval was constructed for the true population mean sleep duration.
 
-A one-sample t test was also conducted to test whether the true mean sleep duration differes from 7 hours
+A one-sample t test was also conducted to test whether the true mean sleep duration differs from 7 hours
 
 ## 4.2: Qualitative variable
+
+### Check Assumptions
+
+- The variable `Sleep Disorder` is categorical.
+- The observations are assumed to be independent because each row represents a different individual.
+- The number of successes is at least 10.
+- The number of failures is at least 10.
+- The success-failure condition is met.
+- The assumptions appear reasonable for this analysis.
 
 The qualitative variable used in this section is Sleep Disorder.
 
@@ -369,6 +385,14 @@ prop.test(x_success, n_total, p = 0.60, alternative = "two.sided")
 
 # Heading 5: Two Samples T-Test - Independent Sampling Method
 
+### Check Assumptions
+
+- The response variable `Sleep Duration` is quantitative.
+- The explanatory variable `Gender` is categorical with two independent groups: male and female.
+- The observations are assumed to be independent because each row represents a different individual.
+- Both groups have sample sizes greater than 30.
+- The assumptions appear reasonable for this analysis.
+
 Research Question:
   "Is there a difference in sleep duration based on gender?"
 
@@ -381,7 +405,7 @@ Samples:
   Sleep Duration in Women
   
 Variables:
-  `Gender`: Gender is a categorical variable representing the `X` value. Made up of 2 independent groups, individuals indemnifying as Male, and individuals identifying as Female.
+  `Gender`: Gender is a categorical variable representing the `X` value. Made up of 2 independent groups, individuals identifying as Male, and individuals identifying as Female.
   `Sleep Duration`: Sleep Duration is a quantitative variable representing the Y value. It's a continuous numerical variable for average number of hours of sleep a night.
   
 Parameters:
@@ -414,6 +438,11 @@ The sample estimates indicate that females (M = 7.23) report slightly higher sle
 
 # Heading 6: Sample Linear Regression
 
+- Both variables, `Sleep Duration` and `Quality of Sleep`, are quantitative.
+- A scatterplot should be used to check that the relationship between the two variables is approximately linear.
+- The observations are assumed to be independent because each row represents a different individual.
+- The assumptions appear reasonable for this analysis.
+
 Research Question:
   Is there a linear relationship between Sleep Duration and Quality of Sleep?
 
@@ -429,7 +458,7 @@ model <- lm(sleep_df$`Quality of Sleep` ~ sleep_df$`Sleep Duration`)
 
 summary(model)
 ```
-A simple linear regression was conducted to examine the relationship between sleep duration and quality of sleep. The results show a statistically significant postie linear relationship between the two variables.
+A simple linear regression was conducted to examine the relationship between sleep duration and quality of sleep. The results show a statistically significant positive linear relationship between the two variables.
 
 Sleep duration was strong predictor of sleep quality, this indicated that for each additional hour of sleep, the quality of sleep increased by ~1.33 on the 0-10 scale on average.
 
@@ -438,3 +467,7 @@ The overall model was statistically significant, suggesting that ~78% of the var
 Overall, there is strong evidence of a positive linear relationship between sleep duration and sleep quality, where longer sleep duration is associated with higher sleep quality.
 
 # Heading 7: Report
+
+Overall, the analysis suggests that sleep duration, sleep quality, gender, and sleep disorder status are meaningful variables for studying well-being and responsible living. Most individuals in the dataset reported no sleep disorder, though insomnia and sleep apnea were still present in a substantial portion of the sample. The average sleep duration was close to 7 hours, and the hypothesis test examined whether the true mean differed from that benchmark.
+The two-sample t-test showed a statistically significant difference in average sleep duration between males and females, with females reporting slightly higher sleep duration on average. The regression analysis also showed a strong positive relationship between sleep duration and quality of sleep, meaning individuals who slept longer tended to report better sleep quality.
+These results connect to responsible living because sleep is an important part of physical health, mental health, and daily functioning. The analysis supports the idea that lifestyle and health patterns can be studied statistically, allowing conclusions to be based on evidence rather than assumptions.
