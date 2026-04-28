@@ -138,6 +138,9 @@ The resulting probability is computed using the standard normal distribution.
 
 # Heading 2: Introduction
 
+## Responsibile Living
+Sleep is essential to physical, mental, and emotional health. It plays a key role in maintaining energy levels, regulating emotional responses, and supporting overall bodily function. Research consistently links good health to both the quality and duration of sleep, showing that insufficient or poor sleep can negatively impact well-being over time.
+
 ## Research Objectives
 The purpose of this analysis is to study patterns in sleep health using both qualitative and quantitative variables from the dataset. The analysis is designed to estimate population characteristics, test statistical claims, compare groups, and examine relationships between variables. This is important because sleep affects health, daily functioning, and overall quality of life. By using confidence intervals and hypothesis tests, the analysis provides evidence-based conclusions rather than simple guesses from raw data.
 
@@ -179,7 +182,7 @@ $H_A: \beta_1 \ne 0$
 
 ## Data Overview
 
-The dataset used in this project is the Sleep Health and Lifestyle Dataset from Kaggle. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
+The dataset used in this project is the [Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset/data) from Kaggle. It contains information about sleep habits, health indicators, and lifestyle factors for individuals. According to the dataset description, it contains 400 rows and 13 columns, with each row representing one person and each column representing a measured variable.
 
 The key variables used in this project are:
 
@@ -338,9 +341,10 @@ t.test(sleep_duration, mu = 7, alternative = "two.sided", conf.level = 0.99)
 
 The point estimate for the population mean sleep duration is the same mean $\bar{x}$
 
-A 99% confidence interval was constructed for the true population mean sleep duration.
+We are 99% confident that the true population mean sleep duration lies within 7.02 - 7.23 hours. This means that if we were to repeatedly take samples and construct confidence intervals in the same way, approximately 99% of those intervals would contain the true mean sleep duration.
 
-A one-sample t test was also conducted to test whether the true mean sleep duration differs from 7 hours
+Since the p-value = 0.00144, which is less than 0.01, we reject the null hypothesis.
+There is sufficient statistical evidence to conclude that the true mean sleep duration is different from 7 hours.
 
 ## 4.2: Qualitative variable
 
@@ -382,6 +386,10 @@ prop.test(x_success, n_total, conf.level = 0.98)
 # One-sample proportion test for p = 0.60
 prop.test(x_success, n_total, p = 0.60, alternative = "two.sided")
 ```
+We are 98% confident that the true population proportion of individuals with no sleep disorder lies within 54.36% - 63%. This suggests that the actual proportion in the population is likely within this range.
+
+Since the p-value = 0.605, which is greater than 0.02, we do not reject the null hypothesis.
+There is insufficient statistical evidence to conclude that the true proportion of individuals with no sleep disorder is different from 60%.
 
 # Heading 5: Two Samples T-Test - Independent Sampling Method
 
@@ -468,18 +476,18 @@ ggplot(sleep_df, aes(x = `Sleep Duration`, y = `Quality of Sleep`)) +
   ) +
   theme_minimal()
 ```
-A simple linear regression was conducted to examine the relationship between sleep duration and quality of sleep. The results show a statistically significant positive linear relationship between the two variables.
+The p-value associated with the slope coefficient is less than 0.001. Since this value is less than 0.05, we reject the null hypothesis that$\beta_{1} = 0$
 
-Sleep duration was strong predictor of sleep quality, this indicated that for each additional hour of sleep, the quality of sleep increased by ~1.33 on the 0-10 scale on average.
+This indicates that there is a statistically significant linear relationship between sleep duration and quality of sleep.
 
-The overall model was statistically significant, suggesting that ~78% of the variation in sleep quality is explained by sleep duration, indicating a strong relationship.
-
-Overall, there is strong evidence of a positive linear relationship between sleep duration and sleep quality, where longer sleep duration is associated with higher sleep quality.
+The model’s $R^{2}$ value of approximately 0.78 indicates that about 78% of the variability in sleep quality is explained by sleep duration.
 
 # Heading 7: Report
 
 Overall, the analysis suggests that sleep duration, sleep quality, gender, and sleep disorder status are meaningful variables for studying well-being and responsible living. Most individuals in the dataset reported no sleep disorder, though insomnia and sleep apnea were still present in a substantial portion of the sample. The average sleep duration was close to 7 hours, and the hypothesis test examined whether the true mean differed from that benchmark.
 
 The two-sample t-test showed a statistically significant difference in average sleep duration between males and females, with females reporting slightly higher sleep duration on average. The regression analysis also showed a strong positive relationship between sleep duration and quality of sleep, meaning individuals who slept longer tended to report better sleep quality.
+
+The linear regression analysis showed that 78% of the variation in sleep quality ratings can be explained by the relationship between sleep duration and sleep quality. This suggests a strong linear association between how long a person sleeps and how they rate the quality of their sleep.
 
 These results connect to responsible living because sleep is an important part of physical health, mental health, and daily functioning. The analysis supports the idea that lifestyle and health patterns can be studied statistically, allowing conclusions to be based on evidence rather than assumptions.
